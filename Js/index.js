@@ -6,7 +6,7 @@ const bgImg = new Image()
 bgImg.src = '../images/road.png'
 
 const runner = new Image()
-runner.src = '../images/runner.jpg'
+runner.src = '../images/runner.png'
 
 
 
@@ -49,7 +49,7 @@ startGame();
   const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height)
-    ctx.drawImage(runner,100 , 160, 60, 100)
+    ctx.drawImage(runner,600 , 200, 20, 50)
 
 
 
