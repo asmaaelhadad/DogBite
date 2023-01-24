@@ -4,6 +4,8 @@ const ctx = canvas.getContext('2d')
 const startButton = document.querySelector(`#start-button`)
 const bgImg = new Image()
 bgImg.src = '../images/road.png'
+/*const bg2 = new Image()
+bg2.src = '../images/bg.png'*/
 
 const runner = new Image()
 runner.src = '../images/runner.png'
@@ -22,13 +24,22 @@ let gameOver = false ;
 let runnerx= 600;
 let runnery= 200;
 
-class Obstacle {
+class obstacles {
   constructor(xPos, yPos, width, height) {
     this.xPos = xPos
     this.yPos = yPos
     this.width = width
     this.height = height
-  }}
+  }
+   draw()  {
+    ctx.beginPath()
+    ctx.fillStyle = 'tomato'
+    this.yPos += 2
+    ctx.rect(this.xPos, this.yPos, this.width, this.height)
+    ctx.fill()
+    ctx.closePath()
+  }
+}
 
 window.addEventListener('load',() =>{
 canvas.style.display= 'none' 
@@ -43,14 +54,9 @@ startGame();
         document.querySelector('.game-intro').style.display = 'none'
     animate()
   }
-/*draw() {
-    ctx.beginPath()
-    ctx.fillStyle = 'tomato'
-    this.yPos += 2
-    ctx.rect(this.xPos, this.yPos, this.width, this.height)
-    ctx.fill()
-    ctx.closePath()
-  }*/
+
+ 
+
   const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(bgImg, bgImgx, bgImgy, canvas.width, canvas.height)
@@ -58,7 +64,16 @@ startGame();
     ctx.drawImage(runner,runnerx , runnery, 20, 50)
 
     // ctx.drawImage(bgImg, bgImgx3, bgImgy3, canvas.width, canvas.height)
+    obstacles.forEach(obstacle => {
+      //obstacle.checkCollision()
+      obstacle.draw(17 , 70, 20 , 20)
+      obstacles.xPos += 10;
+      obstacles.yPos += 10 ;
+      obstacles.width +=10 ;
+      obstacles.height += 10 ;
+    })
     
+obstacles();
     bgImgx += 2;
     bgImgx2 += 2;
     //runnery += 1;
@@ -66,15 +81,27 @@ startGame();
   if (bgImgx > canvas.width){
 
        bgImgx = -canvas.width;
-      
-    }
+      }
     if (bgImgx2> canvas.width){
 
       bgImgx2 = -canvas.width;
-    
+     }
+  //if (bgImgy2 < 0 ){bgImgy2 -= 1 ;}
+  document.addEventListener('keydown', event => {
+    if (event.key === 'ArrowUp') {
+         if (runnery< canvas.height - 50) {runnery += 0.1 ;}
     }
-  
-  
+  })
+    
+    document.addEventListener('keydown', event => {
+      if (event.key === 'ArrowLeft') {
+         if (runnerx > 0){ runnerx -= 0.1 ;} }
+      if (event.key === 'ArrowRight') {
+         if (runnerx < canvas.width -20) {runnerx += 0.1 ;}
+   } }) 
+   
+   
+ 
 
 if (gameOver) {
   cancelAnimationFrame(animateId)
