@@ -9,11 +9,14 @@ const runner = new Image()
 runner.src = '../images/runner.png'
 
 
-
+let canvasWidth= 500;
+let canvasHeight = 500;
+let bgImgy= 0;
+let bgImgy2= -canvas.height;
 const dogWidth = 40
 const dogHeight = 80
 let animatedId ;
-let gameover = false ;
+let gameOver = false ;
 
 
 
@@ -48,10 +51,21 @@ startGame();
   }*/
   const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(bgImg, 0, 0, canvas.width, canvas.height)
+    ctx.drawImage(bgImg, 0, bgImgy, canvas.width, canvas.height)
+    ctx.drawImage(bgImg, 0, bgImgy2, canvas.width, canvas.height)
     ctx.drawImage(runner,600 , 200, 20, 50)
 
+    bgImgy += 2;
+    bgImgy2 += 2;
+    if (bgImgy > canvas.height){
 
+       bgImgy = -canvas.height
+       
+    }
+    if (bgImgy2> canvas.height){
+
+      bgImgy2 = -canvas.height
+    }
 
 if (gameOver) {
   cancelAnimationFrame(animateId)
