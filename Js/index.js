@@ -24,9 +24,9 @@ let gameOver = false ;
 let runnerx= 600;
 let runnery= 200;
 
-class obstacles {
+class Obstacles {
   constructor(xPos, yPos, width, height) {
-    this.xPos = xPos
+    this.xPos = xPos  
     this.yPos = yPos
     this.width = width
     this.height = height
@@ -34,12 +34,13 @@ class obstacles {
    draw()  {
     ctx.beginPath()
     ctx.fillStyle = 'tomato'
-    this.yPos += 2
+    this.xPos += 5
     ctx.rect(this.xPos, this.yPos, this.width, this.height)
     ctx.fill()
     ctx.closePath()
   }
 }
+let obst = [new Obstacles(0, 0,25 ,25 ), new Obstacles(20, 20,25 ,25)]
 
 window.addEventListener('load',() =>{
 canvas.style.display= 'none' 
@@ -64,16 +65,16 @@ startGame();
     ctx.drawImage(runner,runnerx , runnery, 20, 50)
 
     // ctx.drawImage(bgImg, bgImgx3, bgImgy3, canvas.width, canvas.height)
-    obstacles.forEach(obstacle => {
+    obst.forEach(obstacle => {
       //obstacle.checkCollision()
-      obstacle.draw(17 , 70, 20 , 20);
-      obstacle.xPos += 10;
+      obstacle.draw();
+     /* obstacle.xPos += 10;
       obstacle.yPos += 10 ;
       obstacle.width +=10 ;
-      obstacle.height += 10 ;
+      obstacle.height += 10 ;*/
     })
    // obstacles.push(new Obstacle(canvas.width * Math.random(), -50, 50, 50))
-
+//17 , 70, 20 , 20
     bgImgx += 2;
     bgImgx2 += 2;
     //runnery += 1;
