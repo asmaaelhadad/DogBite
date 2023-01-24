@@ -9,16 +9,18 @@ const runner = new Image()
 runner.src = '../images/runner.png'
 
 
-let canvasWidth= 500;
-let canvasHeight = 500;
+//let bgImgy3= -canvas.height * 2 ;
 let bgImgy= 0;
-let bgImgy2= -canvas.height;
+let bgImgy2= 0;
+let bgImgx= 0;
+let bgImgx2= -canvas.width;
+//let bgImgx3= -canvas.width ;
 const dogWidth = 40
 const dogHeight = 80
 let animatedId ;
 let gameOver = false ;
-
-
+let runnerx= 600;
+let runnery= 200;
 
 class Obstacle {
   constructor(xPos, yPos, width, height) {
@@ -51,21 +53,28 @@ startGame();
   }*/
   const animate = () => {
     ctx.clearRect(0, 0, canvas.width, canvas.height)
-    ctx.drawImage(bgImg, 0, bgImgy, canvas.width, canvas.height)
-    ctx.drawImage(bgImg, 0, bgImgy2, canvas.width, canvas.height)
-    ctx.drawImage(runner,600 , 200, 20, 50)
+    ctx.drawImage(bgImg, bgImgx, bgImgy, canvas.width, canvas.height)
+   ctx.drawImage(bgImg, bgImgx2, bgImgy2, canvas.width, canvas.height)
+    ctx.drawImage(runner,runnerx , runnery, 20, 50)
 
-    bgImgy += 2;
-    bgImgy2 += 2;
-    if (bgImgy > canvas.height){
+    // ctx.drawImage(bgImg, bgImgx3, bgImgy3, canvas.width, canvas.height)
+    
+    bgImgx += 2;
+    bgImgx2 += 2;
+    //runnery += 1;
+   // bgImgx3 += 2;
+  if (bgImgx > canvas.width){
 
-       bgImgy = -canvas.height
-       
+       bgImgx = -canvas.width;
+      
     }
-    if (bgImgy2> canvas.height){
+    if (bgImgx2> canvas.width){
 
-      bgImgy2 = -canvas.height
+      bgImgx2 = -canvas.width;
+    
     }
+  
+  
 
 if (gameOver) {
   cancelAnimationFrame(animateId)
