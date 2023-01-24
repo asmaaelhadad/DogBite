@@ -66,14 +66,14 @@ startGame();
     // ctx.drawImage(bgImg, bgImgx3, bgImgy3, canvas.width, canvas.height)
     obstacles.forEach(obstacle => {
       //obstacle.checkCollision()
-      obstacle.draw(17 , 70, 20 , 20)
-      obstacles.xPos += 10;
-      obstacles.yPos += 10 ;
-      obstacles.width +=10 ;
-      obstacles.height += 10 ;
+      obstacle.draw(17 , 70, 20 , 20);
+      obstacle.xPos += 10;
+      obstacle.yPos += 10 ;
+      obstacle.width +=10 ;
+      obstacle.height += 10 ;
     })
-    
-obstacles();
+   // obstacles.push(new Obstacle(canvas.width * Math.random(), -50, 50, 50))
+
     bgImgx += 2;
     bgImgx2 += 2;
     //runnery += 1;
