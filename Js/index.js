@@ -19,6 +19,7 @@ let animatedId ;
 let gameOver = false ;
 let runnerx= 600;
 let runnery= 200;
+let score = 5 ;
 
 class Obstacles {
   constructor(xPos, yPos, width, height, image) {
@@ -39,17 +40,17 @@ class Obstacles {
      ctx.closePath()
             }
                 }
-let obst = [new Obstacles(-900, 20,25 ,25, dOg ),
-           new Obstacles(-20, 100,25 ,25,dOg),
-           new Obstacles(-675, 200,25 ,25, dOg ),
+let obst = [new Obstacles(-900, -20,100 ,50, dOg ),
+           new Obstacles(-20, -100,50 ,55,dOg),
+           new Obstacles(-675, 200,50 ,50, dOg ),
            new Obstacles(-460, 320,25 ,25, dOg),
           // new Obstacles(-50, 280,25 ,25, '../images/dog.png' ), 
-           new Obstacles(-1000, 80,25 ,25, dOg),
+          // new Obstacles(-1000, 80,25 ,25, dOg),
           // new Obstacles(1420, 150,25 ,25, '../images/dog.png' ),
            new Obstacles(-800, 420,25 ,25,dOg )];
-let obstR =[new Obstacles(900, 20,25 ,25, dOg ),
-new Obstacles(1000, 100,25 ,25,dOg),
-new Obstacles(675, 200,25 ,25, dOg )]
+let obstR =[new Obstacles(900, 20,70 ,75, dOg ),
+           new Obstacles(1000, 100,100 ,100,dOg),
+           new Obstacles(675, 200,25 ,25, dOg )]
 
 window.addEventListener('load',() =>{               
 canvas.style.display= 'none' 
@@ -76,6 +77,8 @@ const startGame = () => {
       obstacle.draw();
       obstacle.xPos += 3; 
       if ( obstacle.xPos > canvas.width/3 ){ obstacle.xPos = (-200);}
+      //if (runnerx+20 >= obstacle.xPos || runnery+50== obstacle.yPos){score -= 1}
+       // if (score < 1){gameOver = true;}
       // else if (canvas.width <obstacle.xPos < canvas.width ){ obstacle.xPos += 200;}
       // if (  canvas.width > obstacle.xPos > (canvas.width-50) ){ obstacle.xPos =+ 200;}
 
@@ -87,8 +90,16 @@ const startGame = () => {
        if ( obstacle1.xPos < (canvas.width / 3) *2 ){ obstacle1.xPos = canvas.width + 200;}
       // else if (canvas.width <obstacle.xPos < canvas.width ){ obstacle.xPos += 200;}
       // if (  canvas.width > obstacle.xPos > (canvas.width-50) ){ obstacle.xPos =+ 200;}
-
+      if (runnerx +20 >= obstacle1.xPos && runnery+50 >= obstacle1.yPos
+        &&  runnery <= obstacle1.yPos + obstacle1.height &&  runnerx <= obstacle1.xPos + obstacle1.width 
+        ){
+          score -= 1 ;
+          obstacle1.xPos = canvas.width + 200
+        console.log(score );}
+        
+        if (score < 1){gameOver = true;}
     })
+   
    // obstacles.push(new Obstacle(canvas.width * Math.random(), -50, 50, 50))
     
 //    bgImgx += 2;
@@ -131,8 +142,8 @@ const startGame = () => {
  
 //gameOver
 if (gameOver) {
-  cancelAnimationFrame(animateId)
+  cancelAnimationFrame(animatedId)
 } else {
-  animateId = requestAnimationFrame(animate)
+  animatedId = requestAnimationFrame(animate)
 }}
 })
