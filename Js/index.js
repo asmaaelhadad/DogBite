@@ -81,7 +81,14 @@ const startGame = () => {
        // if (score < 1){gameOver = true;}
       // else if (canvas.width <obstacle.xPos < canvas.width ){ obstacle.xPos += 200;}
       // if (  canvas.width > obstacle.xPos > (canvas.width-50) ){ obstacle.xPos =+ 200;}
-
+      if (runnerx +20 >= obstacle.xPos && runnery+50 >= obstacle.yPos
+        &&  runnery <= obstacle.yPos + obstacle.height &&  runnerx <= obstacle.xPos + obstacle.width 
+        ){
+          score -= 1 ;
+          obstacle.xPos = canvas.width + 200
+        console.log(score );}
+        
+        if (score < 1){gameOver = true;}
     })
 
     obstR.forEach(obstacle1 => {
