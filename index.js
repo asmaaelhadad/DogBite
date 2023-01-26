@@ -25,7 +25,12 @@ let score = 5 ;
 function gameover () {
   canvas.style.display= 'none' 
   document.querySelector('.gameover').style.display = 'block'
-  restart.addEventListener('click', () => {startGame(); })}
+  restart.addEventListener('click', () => {
+    score = 5;
+    gameOver= false;
+   runnerx= 600;
+    runnery= 200;
+    startGame(); })}
  
                
 class Obstacles {

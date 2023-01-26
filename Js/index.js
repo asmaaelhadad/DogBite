@@ -21,12 +21,8 @@ let runnerx= 600;
 let runnery= 200;
 let score = 5 ;
 
-function gameover () {
-  canvas.style.display= 'none' 
-  document.querySelector('.gameover').style.display = 'block'
-  start-button.addEventListener('gameover')
- 
-               }
+
+               
 class Obstacles {
   constructor(xPos, yPos, width, height, image) {
     this.xPos = xPos  
@@ -66,14 +62,22 @@ document.querySelector('.gameover').style.display = 'none'
              })
   
                                   
-const startGame = () => {
+function startGame () {
         canvas.style.display= 'block' 
         document.querySelector('.game-intro').style.display = 'none'
         document.querySelector('.gameover').style.display = 'none'
 
         animate()
                        }
-
+ function gameover () {
+                        canvas.style.display= 'none' 
+                        document.querySelector('.gameover').style.display = 'block'
+                        restart.addEventListener('click', () => {
+                          score = 5;
+                          gameOver= false;
+                         runnerx= 600;
+                          runnery= 200;
+                          startGame(); })}
  
   //Game function
   const animate = () => {
@@ -143,7 +147,7 @@ const startGame = () => {
          if (runnery  <= (canvas.height - 50)) {runnery += 0.05 ;}
     }    
          if (event.key === 'ArrowUp') {
-         if (runnery  <= ( canvas.height - 50)) {runnery -= 0.05 ;}
+         if (runnery  <= ( canvas.height )) {runnery -= 0.05 ;}
     }
   })
     
