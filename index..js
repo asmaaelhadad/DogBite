@@ -1,8 +1,9 @@
 const canvas = document.querySelector('canvas')
 const ctx = canvas.getContext('2d')
 const startButton = document.querySelector(`#start-button`)
+let restart= document.querySelector('#restart')
 const bgImg = new Image()
-bgImg.src = '../images/road.png'
+bgImg.src = './images/road.png'
 const dOg = new Image()
 dOg.src = '../images/dog.png'
 const runner = new Image()
@@ -24,9 +25,9 @@ let score = 5 ;
 function gameover () {
   canvas.style.display= 'none' 
   document.querySelector('.gameover').style.display = 'block'
-  start-button.addEventListener('gameover')
+  restart.addEventListener('click', () => {startGame(); })}
  
-               }
+               
 class Obstacles {
   constructor(xPos, yPos, width, height, image) {
     this.xPos = xPos  
