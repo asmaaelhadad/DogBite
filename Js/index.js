@@ -17,8 +17,8 @@ const dogWidth = 40
 const dogHeight = 80
 let animateId ;
 let gameOver = false ;
-let runnerx= 600;
-let runnery= 200;
+let runnerx= 450;
+let runnery= 115;
 let score = 5 ;
 
 
@@ -42,17 +42,34 @@ class Obstacles {
      ctx.closePath()
             }
                 }
-let obst = [new Obstacles(-900, -420,100 ,50, dOg ),
-           new Obstacles(-20, -400,50 ,55,dOg),
+let obst = [new Obstacles(-900, 420,100 ,50, dOg ),
+           new Obstacles(-20, 400,50 ,55,dOg),
            new Obstacles(-675, 200,50 ,50, dOg ),
            new Obstacles(-460, 320,25 ,25, dOg),
-          // new Obstacles(-50, 280,25 ,25, '../images/dog.png' ), 
-          // new Obstacles(-1000, 80,25 ,25, dOg),
-          // new Obstacles(1420, 150,25 ,25, '../images/dog.png' ),
+           new Obstacles(-50, 280,25 ,25, dOg ), 
+           new Obstacles(-1000, 280,25 ,25, dOg),
+           new Obstacles(1420, 150,25 ,25, dOg ),
+           new Obstacles(-800, 420,25 ,25,dOg ),
+           new Obstacles(-50, 280,25 ,25, dOg ), 
+           new Obstacles(-1000, 280,25 ,25, dOg),
+           new Obstacles(1420, 150,25 ,25, dOg ),
            new Obstacles(-800, 420,25 ,25,dOg )];
 let obstR =[new Obstacles(900, 320,70 ,75, dOg ),
            new Obstacles(1000, 400,100 ,100,dOg),
-           new Obstacles(675, 400,25 ,25, dOg )]
+           new Obstacles(675, 400,25 ,25, dOg ),
+           new Obstacles(900, 420,100 ,50, dOg ),
+           new Obstacles(20, 400,50 ,55,dOg),
+           new Obstacles(675, 200,50 ,50, dOg ),
+           new Obstacles(460, 320,25 ,25, dOg),
+           new Obstacles(50, 280,25 ,25, dOg ), 
+           new Obstacles(1000, 280,25 ,25, dOg),
+           new Obstacles(1420, 150,75 ,75, dOg ),
+           new Obstacles(800, 100,75 ,75,dOg ),
+           new Obstacles(460, 100,25 ,25, dOg),
+           new Obstacles(150, 280,25 ,25, dOg ), 
+           new Obstacles(1000, 280,25 ,25, dOg),
+           new Obstacles(1420, 150,25 ,25, dOg ),
+           new Obstacles(800, 420,25 ,25,dOg )]
 
 window.addEventListener('load',() =>{               
 canvas.style.display= 'none' 

@@ -56,13 +56,16 @@ let obst = [new Obstacles(-900, -420,100 ,50, dOg ),
            new Obstacles(-20, -400,50 ,55,dOg),
            new Obstacles(-675, 200,50 ,50, dOg ),
            new Obstacles(-460, 320,25 ,25, dOg),
-          // new Obstacles(-50, 280,25 ,25, '../images/dog.png' ), 
-          // new Obstacles(-1000, 80,25 ,25, dOg),
-          // new Obstacles(1420, 150,25 ,25, '../images/dog.png' ),
+           new Obstacles(-500, 280,25 ,25, '../images/dog.png' ), 
+           new Obstacles(-1000, 80,25 ,25, dOg),
+           new Obstacles(1420, 150,25 ,25, '../images/dog.png' ),
            new Obstacles(-800, 420,25 ,25,dOg )];
 let obstR =[new Obstacles(900, 320,70 ,75, dOg ),
            new Obstacles(1000, 400,100 ,100,dOg),
-           new Obstacles(675, 400,25 ,25, dOg )]
+           new Obstacles(675, 400,25 ,25, dOg ,
+            new Obstacles(20, -400,50 ,55,dOg),
+            new Obstacles(675, 200,50 ,50, dOg ),
+            new Obstacles(460, 320,25 ,25, dOg) )]
 
 window.addEventListener('load',() =>{               
 canvas.style.display= 'none' 
@@ -146,18 +149,18 @@ const startGame = () => {
  // buttons
   document.addEventListener('keydown', event => {
          if (event.key === 'ArrowDown') {
-         if (runnery  <= (canvas.height - 50)) {runnery += 0.05 ;}
+         if (runnery  <= (canvas.height - 50)) {runnery += 0.001 ;}
     }    
          if (event.key === 'ArrowUp') {
-         if (runnery  <= ( canvas.height - 50)) {runnery -= 0.05 ;}
+         if (runnery  <= ( canvas.height - 50)) {runnery -= 0.001 ;}
     }
   })
     
     document.addEventListener('keydown', event => {
         if (event.key === 'ArrowLeft') {
-        if (runnerx >= 0){ runnerx -= 0.05 ;} }
+        if (runnerx >= 0){ runnerx -= 0.001 ;} }
         if (event.key === 'ArrowRight') {
-        if (runnerx <= canvas.width -20) {runnerx += 0.05 ;} }
+        if (runnerx <= canvas.width -20) {runnerx += 0.001 ;} }
    }) 
    
    
