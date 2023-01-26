@@ -9,7 +9,13 @@ body {
     float: left;
     padding: 0% 10%;
   }
-  
+  .gameover {
+    float: left;
+    padding: 0% 10%;
+    color: aqua;
+    font-size: 18px;
+    font-family: "Verdana"
+  }
   .game-intro p {
     color: aqua;
     font-size: 18px;

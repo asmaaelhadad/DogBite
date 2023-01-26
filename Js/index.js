@@ -15,11 +15,18 @@ let bgImgx2= -canvas.width;
 //let bgImgx3= -canvas.width ;
 const dogWidth = 40
 const dogHeight = 80
-let animatedId ;
+let animateId ;
 let gameOver = false ;
 let runnerx= 600;
 let runnery= 200;
 let score = 5 ;
+
+function gameover () {
+  canvas.style.display= 'none' 
+  document.querySelector('.gameover').style.display = 'block'
+
+}
+
 
 class Obstacles {
   constructor(xPos, yPos, width, height, image) {
@@ -40,33 +47,38 @@ class Obstacles {
      ctx.closePath()
             }
                 }
-let obst = [new Obstacles(-900, -20,100 ,50, dOg ),
-           new Obstacles(-20, -100,50 ,55,dOg),
+let obst = [new Obstacles(-900, -420,100 ,50, dOg ),
+           new Obstacles(-20, -400,50 ,55,dOg),
            new Obstacles(-675, 200,50 ,50, dOg ),
            new Obstacles(-460, 320,25 ,25, dOg),
           // new Obstacles(-50, 280,25 ,25, '../images/dog.png' ), 
           // new Obstacles(-1000, 80,25 ,25, dOg),
           // new Obstacles(1420, 150,25 ,25, '../images/dog.png' ),
            new Obstacles(-800, 420,25 ,25,dOg )];
-let obstR =[new Obstacles(900, 20,70 ,75, dOg ),
-           new Obstacles(1000, 100,100 ,100,dOg),
-           new Obstacles(675, 200,25 ,25, dOg )]
+let obstR =[new Obstacles(900, 320,70 ,75, dOg ),
+           new Obstacles(1000, 400,100 ,100,dOg),
+           new Obstacles(675, 400,25 ,25, dOg )]
 
 window.addEventListener('load',() =>{               
 canvas.style.display= 'none' 
+document.querySelector('.gameover').style.display = 'none'
  startButton.addEventListener('click',()=>{
   startGame();
-                       })
-    
+             })
+  
+                                  
 const startGame = () => {
         canvas.style.display= 'block' 
         document.querySelector('.game-intro').style.display = 'none'
+        document.querySelector('.gameover').style.display = 'none'
+
         animate()
                        }
 
  
   //Game function
   const animate = () => {
+  
     ctx.clearRect(0, 0, canvas.width, canvas.height)
     ctx.drawImage(bgImg, bgImgx, bgImgy, canvas.width, canvas.height)
   // ctx.drawImage(bgImg, bgImgx2, bgImgy2, canvas.width, canvas.height)
@@ -89,6 +101,7 @@ const startGame = () => {
         console.log(score );}
         
         if (score < 1){gameOver = true;}
+        
     })
 
     obstR.forEach(obstacle1 => {
@@ -104,8 +117,10 @@ const startGame = () => {
           obstacle1.xPos = canvas.width + 200
         console.log(score );}
         
-        if (score < 1){gameOver = true;}
-    })
+        if (score < 1){
+          gameOver = true; 
+                       }
+     })
    
    // obstacles.push(new Obstacle(canvas.width * Math.random(), -50, 50, 50))
     
@@ -123,17 +138,12 @@ const startGame = () => {
      }*/
   //if (bgImgy2 < 0 ){bgImgy2 -= 1 ;}
  
- 
- 
- 
- 
- 
-// buttons
+ // buttons
   document.addEventListener('keydown', event => {
-         if (event.key === 'ArrowUp') {
+         if (event.key === 'ArrowDown') {
          if (runnery  <= (canvas.height - 50)) {runnery += 0.05 ;}
     }    
-         if (event.key === 'ArrowDown') {
+         if (event.key === 'ArrowUp') {
          if (runnery  <= ( canvas.height - 50)) {runnery -= 0.05 ;}
     }
   })
@@ -148,9 +158,19 @@ const startGame = () => {
    
  
 //gameOver
+/*function gameOver()  {
+  document.querySelector('.game-intro').style.display = 'none'
+  cancelAnimationFrame(animateId)
+}*/
+//animateId = requestAnimationFrame(animate)
 if (gameOver) {
-  cancelAnimationFrame(animatedId)
-} else {
-  animatedId = requestAnimationFrame(animate)
-}}
+  cancelAnimationFrame(animateId)
+  gameover();
+              }
+ else {
+ animateId = requestAnimationFrame(animate)
+      }
+}
+
 })
+  
