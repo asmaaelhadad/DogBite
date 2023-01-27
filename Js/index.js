@@ -144,18 +144,14 @@ function startGame () {
    
    // obstacles.push(new Obstacle(canvas.width * Math.random(), -50, 50, 50))
     
-//    bgImgx += 2;
+  //    bgImgx += 2;
   //  bgImgx2 += 2;
   //runnery += 1;
-   // bgImgx3 += 2;
-   /* if (bgImgx > canvas.width){
-
-       bgImgx = -canvas.width;
-      }
-    if (bgImgx2> canvas.width){
-
-      bgImgx2 = -canvas.width;
-     }*/
+  // bgImgx3 += 2;
+  /* if (bgImgx > canvas.width
+  bgImgx = -canvas.width;}
+  if (bgImgx2> canvas.width){
+  bgImgx2 = -canvas.width;}*/
   //if (bgImgy2 < 0 ){bgImgy2 -= 1 ;}
  
  // buttons
@@ -177,12 +173,6 @@ function startGame () {
    
    
  
-//gameOver
-/*function gameOver()  {
-  document.querySelector('.game-intro').style.display = 'none'
-  cancelAnimationFrame(animateId)
-}*/
-//animateId = requestAnimationFrame(animate)
 if (gameOver) {
   cancelAnimationFrame(animateId)
   gameover();
